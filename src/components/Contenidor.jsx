@@ -16,37 +16,12 @@ const Contenidor = ({ títol, dades, setDades }) => {
     { capçalera: 'Any de Formació', camp: 'any' },
     { capçalera: 'País d\'Origen', camp: 'paisOrigen' },
     { capçalera: 'Àlbums Publicats', camp: 'qAlbums' },
-    { capçalera: 'Comeback Rumors', camp: 'comebackRumors' }, 
+    { capçalera: 'Integrants', camp: 'integrants' },
+    { capçalera: 'Comeback Rumors', camp: 'comebackRumors' },
+    { capçalera: 'Ultima Gira', camp: 'ultimaGira' }
   ];
-  const afegirBandaHandler = () => {
-    const nom = prompt('Nom del Grup:');
-    const genere = prompt('Gènere:');
-    const any = parseInt(prompt('Any de Formació:'), 10);
-    const paisOrigen = prompt('País d\'Origen:');
-    const qAlbums = parseInt(prompt('Àlbums Publicats:'), 10);
-    const tipus = prompt('Tipus de Banda (activa/dissolta):').toLowerCase();
 
-    let novaBanda;
-    if (tipus === 'activa') {
-      novaBanda = new BandaActiva(nom, genere, any, paisOrigen, qAlbums);
-    } else if (tipus === 'dissolta') {
-      const comebackRumors = prompt('Comeback Rumors (true/false):').toLowerCase() === 'true';
-      novaBanda = new BandaDissolt(nom, genere, any, paisOrigen, qAlbums, comebackRumors);
-    } else {
-      alert('Tipus de banda no vàlid');
-      return;
-    }
-
-    const novesDades = [...dades, novaBanda];
-    setDades(novesDades);
-    setDadesFiltrades(novesDades);
-    setDadesOriginals(novesDades);
-  };
-  const actualitzarTítol = () => {
-    const nouTítol = prompt('Escriu el nou títol:');
-    setTítol(nouTítol);
-  };
-
+  // Funciones de manejo de datos
   const ordenarPerAnyHandler = () => {
     const dadesOrdenades = ordenarPerAny(dadesFiltrades);
     setDadesFiltrades(dadesOrdenades);
@@ -64,7 +39,7 @@ const Contenidor = ({ títol, dades, setDades }) => {
   };
 
   const eliminarTotal = () => {
-    setTotal(null);
+    setTotal(0);
   };
 
   const eliminarOrdenacio = () => {
@@ -75,8 +50,60 @@ const Contenidor = ({ títol, dades, setDades }) => {
     setDadesFiltrades(dadesOriginals);
   };
 
+
+  const grupsBandaNormal = [
+    { nom: 'Linkin Park', genere: 'Nu Metal', any: 1996, paisOrigen: 'EE.UU', qAlbums: 7, integrants: 6 },
+    { nom: 'The Cranberries', genere: 'Rock alternatiu', any: 1989, paisOrigen: 'Irlanda', qAlbums: 7, integrants: 4 },
+    { nom: 'Evanescence', genere: 'Rock gòtic', any: 1995, paisOrigen: 'EE.UU', qAlbums: 6, integrants: 6 },
+    { nom: 'Red Hot Chili Peppers', genere: 'Funk Rock', any: 1983, paisOrigen: 'EE.UU', qAlbums: 13, integrants: 4 }
+  ];
   
- 
+/*   const grup16 = new Banda('Linkin Park', 'Nu Metal', 1996, 'EE.UU.', 7, 6);
+  const grup17 = new Banda('Evanescence', 'Rock', 1995, 'EE.UU.', 5, 5);
+  const grup18 = new Banda('Nirvana', 'Grunge', 1987, 'EE.UU.', 3, 3);
+  const grup19 = new Banda('Coldplay', 'Pop Rock', 1996, 'Regne Unit', 9, 4);
+  const grup20 = new Banda('Red Hot Chili Peppers', 'Funk Rock', 1983, 'EE.UU.', 12, 4); */
+
+  const grupsBandaActiva = [
+    new BandaActiva('Pearl Jam', 'Grunge', 1990, 'EE.UU', 11, 2022, 'Epic Records'),
+    new BandaActiva('Simple Plan', 'Pop-Punk', 1999, 'Canadá', 5, 2023, 'Atlantic Records'),
+    new BandaActiva('Alice in Chains', 'Grunge', 1987, 'EE.UU', 6, 2020, 'Columbia'),
+    new BandaActiva('Blink-182', 'Pop-Punk', 1992, 'EE.UU', 8, 2022, 'Geffen Records'),
+    new BandaActiva('The Offspring', 'Punk-Rock', 1984, 'EE.UU', 10, 2021, 'Columbia')
+  ];
+
+  const grupsBandaDissolt = [
+    new BandaDissolt('El Canto del Loco', 'Pop-Rock', 2000, 'España', 6, 2010, 'Rumors de retorn'),
+    new BandaDissolt('Nirvana', 'Grunge', 1987, 'EE.UU', 3, 1994, 'No tornen junts'),
+    new BandaDissolt('Spice Girls', 'Pop', 1994, 'Regne Unit', 6, 2001, 'Incertessa')
+  ];
+
+
+  const carregarBandaNormal = () => {
+    const novesDades = [...dades, ...grupsBandaNormal];
+    setDades(novesDades);
+    setDadesFiltrades(novesDades);
+    setDadesOriginals(novesDades);
+  };
+
+  const carregarBandaActiva = () => {
+    const novesDades = [...dades, ...grupsBandaActiva];
+    setDades(novesDades);
+    setDadesFiltrades(novesDades);
+    setDadesOriginals(novesDades);
+  };
+
+  const carregarBandaDissolt = () => {
+    const novesDades = [...dades, ...grupsBandaDissolt];
+    setDades(novesDades);
+    setDadesFiltrades(novesDades);
+    setDadesOriginals(novesDades);
+  };
+
+  const actualitzarTítol = () => {
+    const nouTítol = prompt('Escriu el nou títol:');
+    setTítol(nouTítol);
+  };
 
   return (
     <div>
@@ -90,7 +117,9 @@ const Contenidor = ({ títol, dades, setDades }) => {
         <button onClick={eliminarTotal}>Eliminar Total</button>
         <button onClick={eliminarOrdenacio}>Eliminar Ordenació</button>
         <button onClick={eliminarFiltre}>Eliminar Filtre</button>
-       {/*  <button onClick={afegirBandaHandler}>Afegeix</button> */}
+        <button onClick={carregarBandaNormal}>Banda</button>
+        <button onClick={carregarBandaActiva}>Banda Activa</button>
+        <button onClick={carregarBandaDissolt}>Banda Dissolta</button>
       </div>
 
       <Taula configuracio={configuracio} dades={dadesFiltrades} total={total} />

@@ -1,15 +1,14 @@
-
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
-  background-color: #f2f9ff; 
-  /* background-image: url('../img/DALL·E\ 2024-11-28\ 20.24.44\ -\ Design\ a\ minimalistic\ and\ stylish\ logo\ for\ a\ music\ record\ label\ named\ \'Atlantida\ Records\'.\ The\ logo\ should\ feature\ a\ sleek\,\ modern\ penguin\,\ with\ clean.webp'); */
+  background-color: #f2f9ff;
 }
 
+/* Estilo de la tabla */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Aseguramos espacio debajo de la tabla */
 }
 
 th, td {
@@ -19,33 +18,34 @@ th, td {
 }
 
 th {
-  background-color: #e0efff; 
+  background-color: #e0efff;
 }
 
+/* Estilo de los botones */
 button {
   padding: 10px 20px;
   margin: 10px;
-  background-color: #a2c9f7; 
+  background-color: #a2c9f7;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #85aee2; 
+  background-color: #85aee2;
 }
 
-.bottons{
+/* Contenedor de los botones */
+.bottons {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 10px;
-  margin-top: 20px;
-  position: fixed;
-  bottom: 10px;
-  left: 20px;
+  margin-top: 20px; /* Espacio entre la tabla y los botones */
+  margin-bottom: 20px; /* Espacio debajo de los botones, si necesitas más espacio puedes ajustarlo */
 }
 
+/* Total (si es necesario) */
 .total {
   font-weight: bold;
   background-color: #f9f9f9;
