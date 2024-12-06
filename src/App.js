@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Contenidor from './components/Contenidor';
 
 function App() {
-  const [dades, setDades] = useState([]);  // Inicializa la tabla vacía
+  const [dades, setDades] = useState([]);
 
   return (
     <div>

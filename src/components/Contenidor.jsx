@@ -21,7 +21,7 @@ const Contenidor = ({ títol, dades, setDades }) => {
     { capçalera: 'Ultima Gira', camp: 'ultimaGira' }
   ];
 
-  // Funciones de manejo de datos
+
   const ordenarPerAnyHandler = () => {
     const dadesOrdenades = ordenarPerAny(dadesFiltrades);
     setDadesFiltrades(dadesOrdenades);
@@ -73,7 +73,7 @@ const Contenidor = ({ títol, dades, setDades }) => {
   ];
 
   const grupsBandaDissolt = [
-    new BandaDissolt('El Canto del Loco', 'Pop-Rock', 2000, 'España', 6, 2010, 'Rumors de retorn'),
+    new BandaDissolt('El Canto del Loco', 'Pop-Rock', 2000, 'Espanya', 6, 2010, 'Rumors de retorn'),
     new BandaDissolt('Nirvana', 'Grunge', 1987, 'EE.UU', 3, 1994, 'No tornen junts'),
     new BandaDissolt('Spice Girls', 'Pop', 1994, 'Regne Unit', 6, 2001, 'Incertessa')
   ];
@@ -110,7 +110,7 @@ const Contenidor = ({ títol, dades, setDades }) => {
       <h1>{títolActualitzat}</h1>
       <button onClick={actualitzarTítol}>Actualitzar Títol</button>
 
-      <div className="bottons">
+      <div className="botons">
         <button onClick={ordenarPerAnyHandler}>Ordenar per Any de Formació</button>
         <button onClick={filtrarPerPaisHandler}>Filtrar per País</button>
         <button onClick={totalitzarHandler}>Totalitzar Àlbums</button>
